@@ -1,0 +1,16 @@
+version: '3'
+services:
+  master:
+    build: ./jenkins
+    #Forwarding ports from host to container
+    ports:
+      - "50000:50000"
+      - "80:8080"
+    #Mapping docker volumes to jenkins data and log folders
+    volumes:
+      - jenkins-log:/var/log/jenkins
+      - jenkins-data:/var/jenkins_home
+#Creating docker volumes 
+volumes:
+  jenkins-data:
+  jenkins-log:
