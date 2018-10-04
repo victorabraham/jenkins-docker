@@ -2,6 +2,11 @@ FROM jenkins/jenkins:lts
 LABEL maintainer=”teamgracecg@gmail.com”
 # Creating folders folders as root and giving access to jenkins user
 USER root
+RUN apt-get update 
+RUN apt-get install -y software-properties-common
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
+RUN npm i -g sfdx-cli
 RUN mkdir /var/log/jenkins
 RUN mkdir /var/cache/jenkins
 RUN chown -R  jenkins:jenkins /var/log/jenkins
